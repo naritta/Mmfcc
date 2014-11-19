@@ -9,6 +9,8 @@
 
 ## Install and Execute
 
+you need some tools like sox, lame and SPTK.
+
 you can install by executing:
 
     gem install mmfcc
