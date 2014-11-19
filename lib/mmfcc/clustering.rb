@@ -47,7 +47,7 @@ module Mmfcc
 
     def run
 
-    	mfccDir = '../data/mfcc/'
+    	mfccDir = './mfcc/'
 
 	    clusterNum = @cnum.to_i
 	    mfcc_dict = {}
@@ -61,7 +61,7 @@ module Mmfcc
 
 	    cluster = kmeans(all_mfcc, clusterNum)
 
-	    writeToFile = File.open("../data/histgram.txt",'w')
+	    writeToFile = File.open("./histgram.txt",'w')
 
      	mfcc_dict.each{|key, value|
       		writeToFile.puts key
@@ -78,6 +78,7 @@ module Mmfcc
 
       	}
 
+      	puts "histgram.txt is created."
       	writeToFile.close
     end
   end

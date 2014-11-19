@@ -66,12 +66,11 @@ module Mmfcc
 	end
 
   	def run
-  		p "start"
 
       	m4aDir = @m4apath
       	mp3Dir = @mp3path
-	    mfccDir = '../data/mfcc/'
-    	rawDir = '../data/raw/'
+	    mfccDir = './mfcc/'
+    	rawDir = './raw/'
 
     	if not Dir::exist?(mfccDir) then
         	Dir::mkdir(mfccDir)
@@ -81,6 +80,11 @@ module Mmfcc
         end
 
         if @type == "m4a" then
+
+        	if not Dir::exist?(m4aDir) then
+				raise "there is no directry for m4a. Please make directry ./m4a/"    			
+    		end
+
 	        Find.find(m4aDir) {|m4aFile|
 	        	next unless FileTest.file?(m4aFile)
 				next unless m4aFile.end_with?(".m4a")
@@ -103,10 +107,15 @@ module Mmfcc
 		            system("rm temp.raw")
 		        rescue
 		            next
-		            p "failed at decode m4a"
+		            puts "failed at decode m4a"
 		        end
 	        }
 	    else
+
+	    	if not Dir::exist?(mp3Dir) then
+				raise "there is no directry for mp3. Please make directry ./mp3/"
+    		end
+
 			Find.find(mp3Dir) {|mp3File|
 				next unless FileTest.file?(mp3File)
 			  	next unless mp3File.end_with?(".mp3")
@@ -129,7 +138,7 @@ module Mmfcc
 		            system("rm temp.raw")
 		        rescue
 		            next
-		            p "failed at decode mp3"
+		            puts "failed at decode mp3"
 		        end			
 			}
 

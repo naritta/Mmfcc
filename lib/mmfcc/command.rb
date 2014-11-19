@@ -4,10 +4,11 @@ module Mmfcc
   class Command
     def run
     	require 'optparse'
-		params = ARGV.getopts('mc',"type:mp3", "m4apath:../data/m4a/", "mp3path:../data/mp3/", "cnum:8")
+
+		params = ARGV.getopts('mc',"type:mp3", "m4apath:./m4a/", "mp3path:./mp3/", "cnum:8")
 
 		if params["m"] then
-			p "calculating mfcc..."
+			puts "calculating mfcc..."
 
 			require 'mmfcc/mfcc'
 
@@ -16,13 +17,12 @@ module Mmfcc
 		end
 
 		if params["c"] then
-			p "start clustering..."
+			puts "start clustering..."
 
 			require 'mmfcc/clustering'
 
 			clustering = Mmfcc::Clustering.new(params["cnum"])
 			clustering.run
-
 		end
     end
   end

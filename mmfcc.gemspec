@@ -7,10 +7,10 @@ Gem::Specification.new do |s|
   s.version     = Mmfcc::VERSION
   s.authors     = ["RittaNarita"]
   s.email       = ["narittan@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/RittaNarita/Mmfcc"
   s.summary     = %q{the tool for making mfcc of songs}
   s.description = %q{you can make the Mel-frequency cepstrum, which is a feature spectrum of a song. }
-
+  s.license       = "GPLv2"
   s.rubyforge_project = "mmfcc"
 
   s.files         = `git ls-files`.split("\n")
@@ -19,6 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "ai4r", '~> 0'
 end
